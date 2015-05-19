@@ -1,0 +1,68 @@
+doctype html
+html
+  head(lang='en-US')
+    meta(charset='UTF-8')
+    |     &#x9;
+    title PileOn
+    |     &#x9;
+    link(rel='stylesheet', type='text/css', href='/assets/style.css')
+    |     &#x9;
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    |     &#x9;
+    script(src='/socket.io/socket.io.js')
+    |     &#x9;
+    script(src='/assets/pileon.js')
+  | &#x9;
+  body
+    nav.navlink
+      a#logoutLink.navlink(href='/logout') Log Out
+    |     &#x9;
+    header
+    |     &#x9;
+    #container
+    |     &#x9;
+    #chatcol
+      h2 Chat
+      | &#x9;&#x9;&#x9;
+      ul#chatbox
+      |         &#x9;
+      form#chat(name='message', action='/chat')
+        input#usermsg(name='usermessage', type='text', size='19')
+        |           &#x9;&#x9;
+        input#submitmsg(name='submitmessage', type='submit', value='Send')
+    | &#x9;&#x9;
+    canvas#canvas(ondrop='placeCard(event)', ondragover='allowDrop(event)')
+    | &#x9;&#x9;
+    #toolbar
+      section#cardsearch
+        h2 Card Search
+        //
+          Special section for deck statistics.
+          Should be a menu that can be popped out from
+          arrow on side on screen.
+        h3 Card Name:
+        |  
+        | &#x9;&#x9;&#x9;&#x9;
+        input#cardName(type='text')
+        | &#x9;&#x9;&#x9;&#x9;
+        br
+        //
+          Card Language:
+          <br>
+          <input id="cardLanguage" type="text"><br>
+        button#cardSubmit(type='submit')  Search 
+        br
+        | &#x9;&#x9;&#x9;&#x9;
+        img#card(src='/assets/images/MtG_Back.jpg', alt='cardBack', width='150', height='208', draggable='true', ondragstart='drag(event)')
+      |         &#x9;
+      section#deckprice
+        h2 Price Checking
+        |           &#x9;&#x9;
+        button#goldfishBtn MTGGoldfish
+        |           &#x9;&#x9;
+        h3 Deck Text List
+        |           &#x9;&#x9;
+        form#deckform
+          input#decklist(type='text')
+    |       &#x9;
+    footer
